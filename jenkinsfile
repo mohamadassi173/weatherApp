@@ -5,6 +5,7 @@ pipeline {
     agent any
  environment {
         flutter = "/opt/flutter/bin/flutter"
+        JAVA_HOME ="/etc/alternatives/java"
     }
     stages {
         stage ('Flutter Doctor') {

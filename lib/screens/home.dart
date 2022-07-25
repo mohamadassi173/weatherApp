@@ -1,16 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:sizer/sizer.dart';
-import 'weather_model.dart';
-import 'week_weather.dart';
+import '../weather_api.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    WeatherModel.getWeather();
+    WeatherApi.getWeather();
     return Scaffold(
       body: Stack(children: [
         Container(
@@ -40,7 +37,7 @@ class Home extends StatelessWidget {
                   border: Border.all(color: Colors.white)),
               width: 80.w,
               child: FutureBuilder(
-                  future: WeatherModel.getWeather(),
+                  future: WeatherApi.getWeather(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       Map? value = snapshot.data as Map?;
