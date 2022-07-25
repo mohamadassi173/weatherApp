@@ -70,8 +70,6 @@ class Home extends StatelessWidget {
                     return const Text('lol');
                   }),
             ),
-
-            // WeekWeather(),
           ],
         ),
       ]),
