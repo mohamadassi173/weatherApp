@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import '../weather_api.dart';
+import 'package:weatherlens/service/location.dart';
+import '../api/weather_api.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Home({super.key});
+
+  LocationService location = LocationService();
 
   @override
   Widget build(BuildContext context) {
-    WeatherApi.getWeather();
+    location.updatePosition;
     return Scaffold(
       body: Stack(children: [
         Container(
@@ -21,10 +24,7 @@ class Home extends StatelessWidget {
             Center(
               child: Text(
                 "WeatherLens",
-                style: TextStyle(
-                    color: Colors.white,
-                    // fontWeight: FontWeight.bold,
-                    fontSize: 20.sp),
+                style: TextStyle(color: Colors.white, fontSize: 20.sp),
               ),
             ),
             SizedBox(
@@ -37,7 +37,8 @@ class Home extends StatelessWidget {
                   border: Border.all(color: Colors.white)),
               width: 80.w,
               child: FutureBuilder(
-                  future: WeatherApi.getWeather(),
+                  future: WeatherApi.weatherMap(
+                      location.latitude, location.longitude),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       Map? value = snapshot.data as Map?;
@@ -64,7 +65,7 @@ class Home extends StatelessWidget {
                         ],
                       );
                     }
-                    return const Text('lol');
+                    return const Text('error');
                   }),
             ),
           ],
