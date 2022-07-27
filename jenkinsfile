@@ -19,10 +19,17 @@ pipeline {
                 sh "flutter test"
             }
         }
+
         stage ('Flutter Build APK') {
             steps {
                 sh "flutter build apk"
             }
         }
+
+        post {
+        always {
+            archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', onlyIfSuccessful: true
+        }
+    }
     }
 }
