@@ -13,6 +13,12 @@ pipeline {
                 sh "flutter doctor -v"
             }
         }
+    stages {
+        stage ('Flutter Test') {
+            steps {
+                sh "flutter test"
+            }
+        }
         stage ('Flutter Build APK') {
             steps {
                 sh "flutter build apk"
