@@ -24,12 +24,13 @@ pipeline {
             steps {
                 sh "flutter build apk"
             }
+            post {
+            always {
+                archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', onlyIfSuccessful: true
+                }
+            }
         }
 
-        post {
-        always {
-            archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', onlyIfSuccessful: true
-        }
-    }
+
     }
 }
