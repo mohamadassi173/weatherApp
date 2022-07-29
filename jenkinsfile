@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh "flutter test"
             }
-        }l
+        }
 
         stage ('Flutter Build APK') {
             steps {
@@ -28,6 +28,14 @@ pipeline {
             always {
                 archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', onlyIfSuccessful: true
                 }
+            }
+        }
+
+        stage ('Flutter APK deployment') {
+            steps {
+                sh "git add ."
+                sh 'git commit build "success"'
+                sh "git push"
             }
         }
 
