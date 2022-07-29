@@ -15,9 +15,4 @@ void main() {
     expect(weather['coord']['lat'], 31.0461);
     expect(weather['coord']['lon'], 34.8516);
   });
-  test('Icon test', () async {
-    Map weather = await WeatherApi.weatherMap(31.0461, 34.8516);
-
-    expect(weather['weather'][0]['icon'], "01d");
-  });
 }
