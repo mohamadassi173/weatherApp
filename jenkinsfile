@@ -34,7 +34,7 @@ pipeline {
         stage ('Flutter APK deployment') {
             steps {
                 sh "git add ."
-                sh 'git commit -m build "success"'
+                sh 'git commit -m "build success"'
                 sh "git push"
             }
         }
