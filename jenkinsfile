@@ -13,6 +13,12 @@ pipeline {
                 sh "flutter doctor -v"
             }
         }
+        stage ('Clone') {
+            steps {
+                sh "git clone https://github.com/mohamadassi173/weatherApp"
+                sh "cd weatherApp"
+            }
+        }
 
         stage ('Flutter Test') {
             steps {
