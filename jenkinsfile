@@ -35,7 +35,7 @@ pipeline {
             steps {
                 sh "git add ."
                 sh 'git commit -m "build success"'
-                sh "git push git push origin HEAD:main"
+                sh "git push git push origin main"
             }
         }
 
