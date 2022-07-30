@@ -33,10 +33,10 @@ pipeline {
 
         stage ('Flutter APK deployment') {
             steps {
-                sh "git branch main"
-                sh "git add ."
-                sh 'git commit -m "build success"'
-                sh "git push git push origin HEAD:refs/heads/main"
+                sh "git remote rename origin old-origin"
+                sh "git remote add origin https://github.com/mohamadassi173/WeatherLensApp"
+                sh "git push -u origin --all"
+                sh "git push -u origin --tags"
             }
         }
 
